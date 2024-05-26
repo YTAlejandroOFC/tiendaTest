@@ -1,12 +1,184 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
-<script type="module">
-    import React from "https://esm.sh/react@19/?dev"
-    import ReactDOMClient from "https://esm.sh/react-dom@19/client?dev"
-</script>
+    <title>React</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
+
 <body>
+    <div id="root"></div>
+    <!-- #region REACT NATIVO AND JSX -->
+    <!-- <script type="text/babel">
+        React
+        const h1 = React.createElement('h1', {className: 'class-de-css'}, 'Wasaaa');
+        ReactDOM.render(h1, document.getElementById('root'));
+        ////
+        JavaScript
+        const usuario = {
+            Nombre: 'Alejandro',
+            Apellido: 'Sarmiento'
+        };
+        function nombreCompleto(){
+            return usuario.Nombre + ' ' + usuario.Apellido
+        }
+        Babel
+        const h1 = <h1 className={usuario.Apellido}>El nombre es: {nombreCompleto()}</h1>;
+        ReactDOM.render(h1, document.getElementById('root'));
+        function App() {
+        return (<h1>Hola Wasaaaa</h1>);
+        };
+        const h1 = App();
+        ReactDOM.render(h1, document.getElementById('root'));
+    </script> -->
+    <!-- #endregion REACT NATIVO AND JSX -->
+    <!-- #region "VIRTUAL DOOM" -->
+    <!-- <script type="text/babel">
+    function tick(){
+        const element = (
+            <div>
+            <h1>La hora actual es:</h1>
+            <h2>{new Date().toLocaleTimeString()}</h2>
+            </div>
+        );
+        ReactDOM.render(element, document.getElementById('root'));
+    };
+    setInterval(tick, 1000);
+</script> -->
+    <!-- #endregion -->
+    <!-- #region ARBOL DE ELEMENTOS/COMPONENTES -->
+    <!-- <script type="text/babel">
+        function Bienvenido(){
+            return <h1>Bienvenido Wasaaaaaaaaaaa!</h1>
+        }
+        function App(){
+            return (
+                <div>
+                    <Bienvenido/>
+                    <Bienvenido/>
+                    <Bienvenido/>
+                    <Bienvenido/>
+                    <Bienvenido/>
+                    <Bienvenido/>
+                </div>
+            )
+        }
+        const elemnento = document.getElementById('root');
+        ReactDOM.render(<App/>, elemnento)
+    </script> -->
+    <!-- #endregion -->
+    <!-- #region PROPS/COMPONENTES -->
+    <!-- <script type="text/babel">
+    function Bienvenido(props){
+            return <h1>Bienvenido {props.nombre}!</h1>
+        }
     
+    function Login(props){
+        return (
+            <form action="/action.php" method="POST">
+                <label for="name">Nombre:
+                <input type="text" name="name" id="name" placeholder="John Doe" required></input>    
+                </label>
+                <br/>
+                <label for="email">Email:
+                <input type="email" name="email" id="email" placeholder="example@email.com" required></input>
+                </label>
+                <br/>
+                <button>Iniciar Sesión</button>
+            </form>
+        )
+    }
+
+    function App(){
+        const nombre = 'Alejandro'
+            return (
+                <div>
+                    <Bienvenido nombre={nombre}/>
+                    <Login nombre={nombre}/>
+                </div>
+            )
+    }    
+    const elemnento = document.getElementById('root');
+    ReactDOM.render(<App/>, elemnento)
+</script> -->
+    <!-- #endregion -->
+    <!-- #region CLASES -->
+    <!-- <script type="text/babel"> 
+    function Bienvenido(props){
+        return <h1>Bienvenido {props.nombre}!</h1>
+    }
+    class Bienvenido extends React.Component {
+        render(){
+            return <h1>Bienvenido {this.props.nombre}!</h1>
+        }
+    }
+    ReactDOM.render(<Bienvenido nombre="Alejandro"/>, document.getElementById('root'))
+</script> -->
+    <!-- #endregion -->
+    <!-- #region ESCUCHAR EVENTOS -->
+    <!-- <script type="text/babel"> 
+    function Alertador(props){
+        const alerta = (e) => console.log('ALERTA', e)
+        return <button onClick={alerta} >Dame Clic!</button>
+    }
+        class Alertador extends React.Component{
+            alerta = (e) => console.log('ALETA COÑO', e)
+
+            render(){
+                return (<button onClick={this.alerta}>Clickk!!</button>)
+            }
+        }
+    ReactDOM.render(<Alertador/>, document.getElementById('root'));
+</script> -->
+    <!-- #endregion -->
+    <!-- #region ESCUCHAR EVENTOS -->
+    <!-- <script type="text/babel">
+        function Contador(props){
+            const [contar, setContar] = React.useState(0)
+            return (
+                <div>
+                    <h1>{contar}</h1>
+                    <button onClick={()=>{setContar(contar + 1)}}>Click</button>
+                </div>
+            )
+        }
+        class Contador extends React.Component {
+            constructor(props){
+                super(props);
+                this.state= {contar: 0}
+            }
+            render() {
+                return(
+                <div>
+                    <h1>{this.state.contar}</h1>
+                    <button onClick={() => {this.setState((state, props)=>({contar: state.contar + 1}))}}>Click</button>
+                </div>
+                );
+            }
+        }
+
+        ReactDOM.render(<Contador />, document.getElementById('root'))
+    </script> -->
+    <!-- #endregion -->
+    <!-- #region -->
+    <script type="text/babel">
+        function Condicionales(props){
+            return props.authorized ? <h1>Authorized</h1> : <h1>Not Authorized</h1>
+    }
+    function App(props){
+        const [authorized, setAuthorized] = React.useState(false)
+        return  (<div>
+                    <button onClick={()=>setAuthorized(true)}>Autorizar</button>
+                    <Condicionales authorized={authorized}/>
+                </div>)
+        }
+        // ReactDOM.render(<Condicionales authorized/>, document.getElementById('root'))
+        ReactDOM.render(<App/>, document.getElementById('root'))
+
+    </script>
+    <!-- #endregion -->
 </body>
+
 </html>
