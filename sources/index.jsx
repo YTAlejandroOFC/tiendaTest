@@ -43,7 +43,7 @@ function AddItems() {
         const remAmount = updatedItems[itemIndex].remAmount - 1;
         if (updatedItems[itemIndex].remAmount <= 0) {
             const alertP = document.getElementById('Alert');
-            alertP.innerText = `Ya no hay más existencias disponibles de: ${updatedItems[itemIndex].itemName}`;
+            alertP.innerHTML = `Ya no hay más existencias disponibles de: <strong>${updatedItems[itemIndex].itemName}<strong>`;
             alertP.classList.remove('AlertNo');
             alertP.classList.add('AlertYes');
             addEventListener('animationend', function(){
